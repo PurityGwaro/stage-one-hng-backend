@@ -48,7 +48,7 @@ const getProfile = async (req, res) => {
     } else {
       res.status(404).json({
         error:
-          "Profile not found. If it's two names write it this way: purity gwaro OR Purity Gwaro. The space has to be there.",
+          "Profile not found. If it's two names write it this way: purity-gwaro OR Purity-Gwaro. The space has to be there.",
         current_day,
         utc_time,
         status_code: 404,
