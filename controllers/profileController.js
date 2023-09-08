@@ -32,10 +32,27 @@ const getProfile = async (req, res) => {
         )
     );
 
+    const currentDate = new Date().toISOString();
+    const current_day = new Date().toLocaleDateString("en-US", {
+      weekday: "long",
+    });
+    const utc_time = currentDate;
+
     if (findProfile) {
-      res.status(200).json({ ...findProfile, status_code: 200 });
+      res.status(200).json({
+        ...findProfile,
+        current_day,
+        utc_time,
+        status_code: 200,
+      });
     } else {
-      res.status(404).json({ error: "Profile not found. If it's two names write it this way: purity gwaro OR Purity Gwaro. The space has to be there.",status_code: 404 });
+      res.status(404).json({
+        error:
+          "Profile not found. If it's two names write it this way: purity gwaro OR Purity Gwaro. The space has to be there.",
+        current_day,
+        utc_time,
+        status_code: 404,
+      });
     }
   });
 };
