@@ -1,4 +1,5 @@
 const fs = require("fs");
+const moment = require('moment');
 
 const getProfile = async (req, res) => {
   const { slack_name, track } = req.query;
@@ -27,11 +28,12 @@ const getProfile = async (req, res) => {
         profile.track.toLowerCase() === lowercaseTrack
     );
 
-    const currentDate = new Date().toISOString();
     const current_day = new Date().toLocaleDateString("en-US", {
       weekday: "long",
     });
-    const utc_time = currentDate;
+    const utc_time = moment.utc().format();
+
+    console.log(utc_time);
 
     if (findProfile) {
       res.status(200).json({
