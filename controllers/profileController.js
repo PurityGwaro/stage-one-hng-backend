@@ -29,7 +29,7 @@ const getProfile = async (req, res) => {
         profile.track.toLowerCase() === lowercaseTrack
         )
 
-    const currentDate = new Date().toISOString();
+    const currentDate = new Date().toUTCString();
     const current_day = new Date().toLocaleDateString("en-US", {
       weekday: "long",
     });
