@@ -16,8 +16,6 @@ const getProfile = async (req, res) => {
     }
     const profileCollection = JSON.parse(data);
 
-    console.log(profileCollection[0].slack_name);
-
     // use slack_name and track to find profile
     const lowercaseSlackName = slack_name.toLowerCase();
     const lowercaseTrack = track.toLowerCase();
@@ -27,9 +25,9 @@ const getProfile = async (req, res) => {
       (profile) =>
         profile.slack_name.toLowerCase() === lowercaseSlackName &&
         profile.track.toLowerCase() === lowercaseTrack
-        )
+    );
 
-    const currentDate = new Date().toUTCString();
+    const currentDate = new Date().toISOString();
     const current_day = new Date().toLocaleDateString("en-US", {
       weekday: "long",
     });
